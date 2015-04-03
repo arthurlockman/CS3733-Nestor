@@ -1,0 +1,2 @@
+#Nestor Solitaire Implementation
+
