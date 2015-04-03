@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.7
+version = '1.0'
+mainClassName = "view.Nestor"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '3.8.2'
+    compile group: 'junit', name: 'junit', version: '3.8.2'
+}
