@@ -1,8 +1,8 @@
-package view;
-
+package ajlockman;
 import ks.client.gamefactory.GameWindow;
 import ks.common.games.Solitaire;
 import ks.common.model.BuildablePile;
+import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.view.BuildablePileView;
@@ -10,6 +10,9 @@ import ks.common.view.CardImages;
 import ks.common.view.ColumnView;
 import ks.common.view.IntegerView;
 import ks.launcher.Main;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Nestor extends Solitaire
 {
@@ -68,7 +71,8 @@ public class Nestor extends Solitaire
 
         updateNumberCardsLeft(52);
 
-        //Handle dealing cards.
+        //Handle dealing cards
+
     }
 
     void initializeView()
@@ -88,7 +92,7 @@ public class Nestor extends Solitaire
         //Initialize reserve view.
         reserveView = new BuildablePileView(reserve);
         reserveView.setBounds(20, 30 + tableauViews[0].getHeight(),
-                ci.getWidth(), ci.getHeight());
+                ci.getWidth(), (int)(ci.getHeight() * 1.5));
         container.addWidget(reserveView);
 
         //Initialize score view
