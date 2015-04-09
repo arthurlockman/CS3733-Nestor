@@ -9,12 +9,24 @@ public class RemoveCardTableauMoveTest extends TestCase
     public void testSimpleMove()
     {
         Nestor nestor = new Nestor();
-        GameWindow gw = Main.generateWindow(new Nestor(), Deck.OrderByRank);
+        GameWindow gw = Main.generateWindow(nestor, Deck.OrderByRank);
         gw.setVisible(true);
 
         RemoveCardTableauMove rctm =
                 new RemoveCardTableauMove(nestor.tableau[0],
                         nestor.tableau[1], nestor.deck);
         assertEquals(true, rctm.valid(nestor));
+    }
+
+    public void testInvalidMove()
+    {
+        Nestor nestor = new Nestor();
+        GameWindow gw = Main.generateWindow(nestor, Deck.OrderByRank);
+        gw.setVisible(true);
+
+        RemoveCardTableauMove rctm =
+                new RemoveCardTableauMove(nestor.tableau[0],
+                        nestor.tableau[4], nestor.deck);
+        assertEquals(false, rctm.valid(nestor));
     }
 }

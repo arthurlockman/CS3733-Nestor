@@ -14,7 +14,6 @@ public class RemoveCardTableauMove extends Move
     public RemoveCardTableauMove(Column c1, Column c2, Deck d)
     {
         source1 = c1;
-//        System.out.println(c1.toString());
         source2 = c2;
         deck = d;
     }
