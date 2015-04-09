@@ -11,9 +11,6 @@ import ks.common.view.ColumnView;
 import ks.common.view.IntegerView;
 import ks.launcher.Main;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class Nestor extends Solitaire
 {
     protected Deck deck;
@@ -72,7 +69,41 @@ public class Nestor extends Solitaire
         updateNumberCardsLeft(52);
 
         //Handle dealing cards
-
+        while (deck.count() > 4)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                boolean matched = false;
+                Card c = deck.get();
+                for (int j = 0; j < tableau[i].count(); j++)
+                {
+                    if (tableau[i].peek(j).sameRank(c))
+                    {
+                        matched |= true;
+                    }
+                }
+                if (!matched)
+                {
+                    tableau[i].add(c);
+                    updateNumberCardsLeft(-1);
+                } else {
+                    //Move card to bottom of deck.
+                    Deck tmp = new Deck();
+                    tmp.removeAll();
+                    tmp.push(deck);
+                    deck.removeAll();
+                    deck.add(c);
+                    deck.push(tmp);
+                }
+            }
+        }
+        while(deck.count() > 0)
+        {
+            reserve.add(deck.get());
+            reserve.flipCard();
+            updateNumberCardsLeft(-1);
+        }
+        reserve.flipCard();
     }
 
     void initializeView()
@@ -114,7 +145,7 @@ public class Nestor extends Solitaire
 
     public static void main (String []args)
     {
-        GameWindow gw = Main.generateWindow(new Nestor(), Deck.OrderBySuit);
+        GameWindow gw = Main.generateWindow(new Nestor(), Deck.OrderByRank);
         gw.setVisible(true);
     }
 }
