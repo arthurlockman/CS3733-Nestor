@@ -29,7 +29,13 @@ public class Nestor extends Solitaire
     @Override
     public boolean hasWon()
     {
-        return false;
+        int empty = 0;
+        for (int i = 0; i < 8; i++)
+        {
+            if (tableau[i].empty()) empty++;
+        }
+        if (reserve.empty()) empty++;
+        return (empty == 9);
     }
 
     /**
@@ -71,7 +77,6 @@ public class Nestor extends Solitaire
         //Handle dealing cards
         System.out.println("Dealing cards...");
         int deals = 0;
-        boolean failed = false;
         while (deck.count() > 4)
         {
             deals++;
