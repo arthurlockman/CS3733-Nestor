@@ -10,6 +10,7 @@ public class RemoveCardTableauMoveTest extends TestCase
     {
         Nestor nestor = new Nestor();
         GameWindow gw = Main.generateWindow(new Nestor(), Deck.OrderByRank);
+        gw.setVisible(true);
 
         RemoveCardTableauMove rctm =
                 new RemoveCardTableauMove(nestor.tableau[0],

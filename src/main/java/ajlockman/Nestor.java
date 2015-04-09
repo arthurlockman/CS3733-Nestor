@@ -69,8 +69,13 @@ public class Nestor extends Solitaire
         updateNumberCardsLeft(52);
 
         //Handle dealing cards
+        System.out.println("Dealing cards...");
+        int deals = 0;
+        boolean failed = false;
         while (deck.count() > 4)
         {
+            deals++;
+            if (deals > 48) { break; }
             for (int i = 0; i < 8; i++)
             {
                 if (!(tableau[i].count() >= 6)) {
@@ -103,6 +108,7 @@ public class Nestor extends Solitaire
             updateNumberCardsLeft(-1);
         }
         reserve.flipCard();
+        System.out.println("Done.");
     }
 
     void initializeView()
