@@ -23,10 +23,10 @@ public class RemoveCardTableauMove extends Move
     {
         if (!valid(game)) { return false; }
 
-        Card c = source1.get();
-        deck.add(c);
-        c = source2.get();
-        deck.add(c);
+        Card c1 = source1.get();
+        deck.add(c1);
+        Card c2 = source2.get();
+        deck.add(c2);
         return true;
     }
 
