@@ -73,27 +73,26 @@ public class Nestor extends Solitaire
         {
             for (int i = 0; i < 8; i++)
             {
-                boolean matched = false;
-                Card c = deck.get();
-                for (int j = 0; j < tableau[i].count(); j++)
-                {
-                    if (tableau[i].peek(j).sameRank(c))
-                    {
-                        matched |= true;
+                if (!(tableau[i].count() >= 6)) {
+                    boolean matched = false;
+                    Card c = deck.get();
+                    for (int j = 0; j < tableau[i].count(); j++) {
+                        if (tableau[i].peek(j).sameRank(c)) {
+                            matched |= true;
+                        }
                     }
-                }
-                if (!matched)
-                {
-                    tableau[i].add(c);
-                    updateNumberCardsLeft(-1);
-                } else {
-                    //Move card to bottom of deck.
-                    Deck tmp = new Deck();
-                    tmp.removeAll();
-                    tmp.push(deck);
-                    deck.removeAll();
-                    deck.add(c);
-                    deck.push(tmp);
+                    if (!matched) {
+                        tableau[i].add(c);
+                        updateNumberCardsLeft(-1);
+                    } else {
+                        //Move card to bottom of deck.
+                        Deck tmp = new Deck();
+                        tmp.removeAll();
+                        tmp.push(deck);
+                        deck.removeAll();
+                        deck.add(c);
+                        deck.push(tmp);
+                    }
                 }
             }
         }
