@@ -35,7 +35,7 @@ public class ImageScroller implements RectangleHierarchyVisitor, Runnable {
 	protected int scrollDistance = 2;
 
 	/** The thread to oversee the scrolling. */
-	protected Thread thread;
+	protected java.lang.Thread thread;
 
 	/** Assume we are originally visible. */
 	protected boolean visible = true;
@@ -172,7 +172,7 @@ public class ImageScroller implements RectangleHierarchyVisitor, Runnable {
 	 * @param node    root RectangleHierarchy node being visited
 	 * @param clip    Rectangle within whichd drawing is clipped.
 	 */
-	public void visit(Graphics g, RectangleHierarchy node, Rectangle clip) {
+	public void visit(Graphics g, RectangleHierarchy node, java.awt.Rectangle clip) {
 
 		// If there are any children, we must move on because drawing only
 		// occurs on leaf nodes.

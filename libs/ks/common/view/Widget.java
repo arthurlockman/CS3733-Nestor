@@ -47,7 +47,7 @@ public abstract class Widget implements ElementListener {
 	protected int height;
 
 	/** The image that is displayed in the paint(Graphics g) method. */	
-	protected Image image = null;
+	protected java.awt.Image image = null;
 
 	/** The container. Also the peer to ask when requesting an Image. */
 	protected Container container;
@@ -60,7 +60,7 @@ public abstract class Widget implements ElementListener {
 	 * Image maintained by this widget to perform any drawings. Accessed by subclasses ONLY.
 	 * Placed here so it can be finalized. 
 	 */
-	protected Image offscreenImage = null;
+	protected java.awt.Image offscreenImage = null;
 	
 	/** Will be set by subclasses. */
 	protected String name;
@@ -107,8 +107,8 @@ public abstract class Widget implements ElementListener {
 	 * Return the bounds of the Widget as a newly instantiated rectangle.
 	 * @return java.awt.Rectangle
 	 */
-	public Rectangle getBounds() {
-		return new Rectangle (x, y, width, height);
+	public java.awt.Rectangle getBounds() {
+		return new java.awt.Rectangle (x, y, width, height);
 	}
 
 	/**
@@ -131,7 +131,7 @@ public abstract class Widget implements ElementListener {
 	 * Return the image of this Widget (used for drawing the Widget on screen).
 	 * @return java.awt.Image
 	 */
-	public Image getImage() {
+	public java.awt.Image getImage() {
 		return image;
 	}
 
@@ -194,7 +194,7 @@ public abstract class Widget implements ElementListener {
 	 * @return boolean 
 	 * @param p java.awt.Point
 	 */
-	public boolean inBounds(Point p) {
+	public boolean inBounds(java.awt.Point p) {
 		if (p.x < x) return false;
 		if (p.x > x + width) return false;
 		if (p.y < y) return false;
@@ -234,7 +234,7 @@ public abstract class Widget implements ElementListener {
 	 * <p>
 	 * @param g java.awt.Graphics
 	 */
-	public void paint(Graphics g) {
+	public void paint(java.awt.Graphics g) {
 		// If image is null, we haven't drawn it for the first time. Do so now by
 		// asking subclasses to redraw.
 		if (getImage() == null) {
@@ -247,7 +247,7 @@ public abstract class Widget implements ElementListener {
 			setDirty (false);
 		}
 
-		Image img = getImage();
+		java.awt.Image img = getImage();
 
 		// Because of race observed race conditions, the image may yet be null! We don't want
 		// to exit in error. We mask the problem, and hope it doesn't occur that often.
@@ -256,7 +256,7 @@ public abstract class Widget implements ElementListener {
 			// we can use the full method to transfer only what is needed.
 			// Use container as the ImageObserver.
 			if (g != null) {
-				g.drawImage (img, x, y, x+width,y+height, 0, 0, width, height, Color.white, container);
+				g.drawImage (img, x, y, x+width,y+height, 0, 0, width, height, java.awt.Color.white, container);
 			}
 		}
 	}
@@ -319,7 +319,7 @@ public abstract class Widget implements ElementListener {
 	 * Set the graphical bounds for this widget within the Container using a Rectangle.
 	 * @param r java.awt.Rectangle
 	 */
-	public void setBounds(Rectangle r) {
+	public void setBounds(java.awt.Rectangle r) {
 		this.x = r.x;
 		this.y = r.y;
 		this.width = r.width;
@@ -370,7 +370,7 @@ public abstract class Widget implements ElementListener {
 	 * This sets the dirty state of the Widget.
 	 * @param newImage java.awt.Image
 	 */
-	public void setImage(Image newImage) {
+	public void setImage(java.awt.Image newImage) {
 		image = newImage;
 
 		dirty = true;

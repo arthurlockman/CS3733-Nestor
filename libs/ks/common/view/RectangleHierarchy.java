@@ -29,7 +29,7 @@ import java.awt.Rectangle;
 
 public class RectangleHierarchy {
 	/** The bounds for this node */
-	protected Rectangle bounds = null;
+	protected java.awt.Rectangle bounds = null;
 
 	/** Each Rectangle node can have up to four children. */
 	protected RectangleHierarchy children[] = null;

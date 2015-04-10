@@ -132,7 +132,7 @@ public class PlayerJPanel extends JPanel {
 	 * @param g java.awt.Graphics
 	 */
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(java.awt.Graphics g) {
 		super.paintComponent(g); 
 
 		// calculate maxPoints: always ensure there is at least some size.

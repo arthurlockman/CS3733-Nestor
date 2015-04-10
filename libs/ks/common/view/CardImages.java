@@ -106,7 +106,7 @@ public class CardImages {
 	 * @return Image
 	 * @param c    card whose image is being requested.
 	 */
-	public Image getCardImage(Card c) {
+	public java.awt.Image getCardImage(Card c) {
 		if (c == null) {
 			throw new IllegalArgumentException ("CardImages::getCardImage() given null Card object.");
 		}

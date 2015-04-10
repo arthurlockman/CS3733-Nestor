@@ -20,10 +20,10 @@ import ks.common.view.RectangleHierarchyVisitor;
 public class Psychedelic implements RectangleHierarchyVisitor, Runnable {
 
 	/** My color to show. */
-	protected Color myColor;
+	protected java.awt.Color myColor;
 	
 	/** The thread to oversee the scrolling. */
-	protected Thread thread;
+	protected java.lang.Thread thread;
 	
 	/** Delay between color changing. */
 	protected int delay = 50;
@@ -39,7 +39,7 @@ public class Psychedelic implements RectangleHierarchyVisitor, Runnable {
 	 * @param cont    Container in which background will be drawn
 	 * @param c       Color to use
 	 */
-	public Psychedelic(Container cont, Color c) {
+	public Psychedelic(Container cont, java.awt.Color c) {
 		if (cont == null) throw new IllegalArgumentException ("Psychadelic::Psychadelic(Container, Color) received null Container parameter.");
 		if (c == null) throw new IllegalArgumentException ("Psychadelic::Psychadelic(Container, Color) received null Color parameter.");
 

@@ -19,7 +19,7 @@ public class ImageCopier implements RectangleHierarchyVisitor {
 	protected Image myImage;
 
 	/** The image observer visible on the screen. */
-	protected ImageObserver myObserver = null;
+	protected java.awt.image.ImageObserver myObserver = null;
 
 	/** The graphics context in which to draw. */
 	//protected java.awt.Graphics myGraphics;
@@ -64,7 +64,7 @@ public class ImageCopier implements RectangleHierarchyVisitor {
 	 * @param node
 	 * @param clip
 	 */
-	public void visit(Graphics g, RectangleHierarchy node, Rectangle clip) {
+	public void visit(Graphics g, RectangleHierarchy node, java.awt.Rectangle clip) {
 
 		// If there are any children, we must move on because drawing only
 		// occurs on leaf nodes.

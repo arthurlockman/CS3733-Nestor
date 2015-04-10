@@ -83,7 +83,7 @@ public class RowView extends Widget implements ElementListener {
 
 		// Determine if the mouse event falls on the top card.
 		// Convert Mouse event to local coordinates within the Widget
-		Point p = new Point (me.getX() - x, me.getY() - y);
+		java.awt.Point p = new java.awt.Point (me.getX() - x, me.getY() - y);
 
 		// Make sure to adjust for the number of covered cards.
 		int deltaX = numCoveredCards() * cards.getOverlap();
@@ -152,7 +152,7 @@ public class RowView extends Widget implements ElementListener {
 
 		// Determine if the mouse event falls on the top card.
 		// Convert Mouse event to local coordinates within the Widget
-		Point p = new Point (me.getX() - x, me.getY() - y);
+		java.awt.Point p = new java.awt.Point (me.getX() - x, me.getY() - y);
 
 		// Make sure to adjust for the number of covered cards.
 		int overlap = cards.getOverlap();
@@ -305,7 +305,7 @@ public class RowView extends Widget implements ElementListener {
 
 		// clear to the background color of the viewing peer. Always fill to the
 		// greatest extent seen so far (which is widestWidth).
-		Graphics g = offscreenImage.getGraphics();
+		java.awt.Graphics g = offscreenImage.getGraphics();
 
 		g.setColor (container.getBackground());
 		g.fillRect (0, 0, widestWidth, height);
@@ -351,7 +351,7 @@ public class RowView extends Widget implements ElementListener {
 			}
 		} else {
 			// Create a thin rectangle outline to show outline of the Column.
-			g.setColor (Color.black);
+			g.setColor (java.awt.Color.black);
 			if (justification == LEFT) {
 				g.drawRect (0, 0, cards.getWidth(), cards.getHeight());
 			} else {

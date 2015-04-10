@@ -44,7 +44,7 @@ public class CardImagesLoader implements Runnable {
 	protected Component peer = null;
 
 	/** Thread in which the loadAllCards will run. */
-	protected Thread thread = null;
+	protected java.lang.Thread thread = null;
 
 	/** Interface for writing information on progress of load. */
 	protected ICardImagesStatus output = null;
@@ -177,7 +177,7 @@ public class CardImagesLoader implements Runnable {
 		// The media Tracker ensures all images are fully loaded: This avoids the
 		// arbitrary race conditions that may happen when running a plugin before all
 		// images have been properly loaded,
-		MediaTracker mt = new MediaTracker (peer);
+		java.awt.MediaTracker mt = new java.awt.MediaTracker (peer);
 
 		// Create a CardImages to house the deck of card images.
 		CardImages ci = new CardImages(this, mt);
@@ -197,7 +197,7 @@ public class CardImagesLoader implements Runnable {
 			if (url == null) {
 				failedStatus = true;
 			}
-			Image img = Toolkit.getDefaultToolkit().getImage(url);
+			Image img = java.awt.Toolkit.getDefaultToolkit().getImage(url);
 			mt.addImage (img, idx++);
 			ci.setCardImage (c, img);
 		}
@@ -207,7 +207,7 @@ public class CardImagesLoader implements Runnable {
 		if (u == null) {
 			failedStatus = true;
 		}
-		Image img = Toolkit.getDefaultToolkit().getImage(u);
+		Image img = java.awt.Toolkit.getDefaultToolkit().getImage(u);
 		mt.addImage (img, idx++);
 		ci.setCardReverse (img);
 

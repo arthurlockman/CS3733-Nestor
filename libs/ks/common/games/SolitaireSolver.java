@@ -57,7 +57,7 @@ public class SolitaireSolver implements Runnable {
 	protected boolean terminate = false;
 
 	/** Thread in which the loadAllCards will run. */
-	protected Thread thread = null;
+	protected java.lang.Thread thread = null;
 
 	/**
 	 * SolitaireSolver constructor.

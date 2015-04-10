@@ -15,7 +15,7 @@ import java.awt.Color;
 public class BackgroundCopier implements RectangleHierarchyVisitor {
 
 	/** My color to show. */
-	protected Color myColor;
+	protected java.awt.Color myColor;
 	
 	/** Old color prior to drawing. */
 	Color oldColor; 
@@ -28,7 +28,7 @@ public class BackgroundCopier implements RectangleHierarchyVisitor {
 	 * @param g Graphics
 	 * @param c java.awt.Color
 	 */
-	public BackgroundCopier(Color c) {
+	public BackgroundCopier(java.awt.Color c) {
 		if (c == null) throw new IllegalArgumentException ("BackgroundCopier::BackgroundCopier(Grahpics, Color) received null Color parameter.");
 		myColor = c;
 	}

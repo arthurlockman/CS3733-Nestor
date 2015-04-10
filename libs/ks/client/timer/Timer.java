@@ -86,7 +86,7 @@ public void addActionListener(ActionListener l) {
  * Creation date: (10/16/01 7:40:03 PM)
  * @return java.lang.String
  */
-public String getActionCommand() {
+public java.lang.String getActionCommand() {
 	return actionCommand;
 }
 /**
@@ -225,7 +225,7 @@ public void run() {
  * if the specified property value is unacceptable
  * @param newActionCommand java.lang.String
  */
-public void setActionCommand(String newActionCommand) {
+public void setActionCommand(java.lang.String newActionCommand) {
 	actionCommand = newActionCommand;
 }
 /**

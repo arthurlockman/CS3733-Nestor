@@ -22,8 +22,8 @@ public class GameWindow extends java.awt.Frame implements IUpdateStatus {
 	 * Comment for <code>serialVersionUID</code>
 	 */
 	private static final long serialVersionUID = 3544957666427353398L;
-	private Panel ivjContentsPane = null;
-	private Panel ivjTopPane = null;
+	private java.awt.Panel ivjContentsPane = null;
+	private java.awt.Panel ivjTopPane = null;
 	
 	private Container ivjContainer = null;
 
@@ -137,7 +137,7 @@ public class GameWindow extends java.awt.Frame implements IUpdateStatus {
 	Panel getControlPane() {
 		if (ivjTopPane == null) {
 			try {
-				ivjTopPane = new Panel();
+				ivjTopPane = new java.awt.Panel();
 				ivjTopPane.setName("TopPane");
 				ivjTopPane.setSize(769, 40);
 				ivjTopPane.setLayout(null);
@@ -157,7 +157,7 @@ public class GameWindow extends java.awt.Frame implements IUpdateStatus {
 	Panel getContentsPane() {
 		if (ivjContentsPane == null) {
 			try {
-				ivjContentsPane = new Panel();
+				ivjContentsPane = new java.awt.Panel();
 				ivjContentsPane.setName("ContentsPane");
 				ivjContentsPane.setLayout(null);
 				ivjContentsPane.setBackground(new java.awt.Color(0,138,0));

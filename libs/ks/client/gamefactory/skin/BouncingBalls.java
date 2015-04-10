@@ -58,7 +58,7 @@ public class BouncingBalls implements RectangleHierarchyVisitor, Runnable {
 	protected int radius = 7;
 
 	/** The thread to oversee the scrolling. */
-	protected Thread thread;
+	protected java.lang.Thread thread;
 
 	/** Assume we are originally visible. */
 	protected boolean visible = true;
@@ -288,7 +288,7 @@ public class BouncingBalls implements RectangleHierarchyVisitor, Runnable {
 	 * @param node    root RectangleHierarchy to start visitation
 	 * @param clip    Rectangle within which drawing is clipped.
 	 */
-	public void visit(Graphics g, RectangleHierarchy node, Rectangle clip) {
+	public void visit(Graphics g, RectangleHierarchy node, java.awt.Rectangle clip) {
 
 		// we can't do anything until we have a valid ballPosition!!
 		if (balls.size() == 0) return;

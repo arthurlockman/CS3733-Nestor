@@ -70,7 +70,7 @@ public class Element {
 	 * Creation date: (10/2/01 10:24:30 PM)
 	 * @param newName java.lang.String
 	 */
-	public void setName(String newName) {
+	public void setName(java.lang.String newName) {
 		if (newName	== null) throw new IllegalArgumentException ("Element::setName() received null name parameter.");
 
 		name = newName;

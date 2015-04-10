@@ -94,7 +94,7 @@ public class Container extends JPanel {
 	protected static final Widget nothingBeingDragged = new EmptyWidget();
 
 	/** if an entity is being dragged, this point reflects the anchor Point within the widget (useful for ensuring smooth drags). */
-	protected Point draggingAnchor = null;
+	protected java.awt.Point draggingAnchor = null;
 
 	/** Every container must have a mouseManager to coordinate reactions that don't occur in a widget. */
 	protected MouseManager mouseManager = new MouseManager (this);
@@ -112,7 +112,7 @@ public class Container extends JPanel {
 	protected RectangleHierarchyVisitor visitor;
 
 	/** What was the point of the last drag. */
-	protected Point lastDrag;
+	protected java.awt.Point lastDrag;
 
 	/** Has a widget told us that a drag is in progress? */
 	protected boolean dragging;
@@ -533,7 +533,7 @@ public class Container extends JPanel {
 	 * @param g java.awt.Graphics
 	 */
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(java.awt.Graphics g) {
 		// create once needed. All drawing goes into this.
 		if (offscreenImage == null) {
 			offscreenImage = this.createImage(getWidth(), getHeight());

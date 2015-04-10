@@ -55,7 +55,7 @@ public class PileView extends Widget {
 		CardView cv = new CardView (theCard);
 
 		// Set Bounds of this cardView widget to the bounds of the Pile from our own coordinates.
-		cv.setBounds (new Rectangle (x, y, cards.getWidth(), cards.getHeight()));
+		cv.setBounds (new java.awt.Rectangle (x, y, cards.getWidth(), cards.getHeight()));
 
 		// use the same peer. NOTE: we must do this because we aren't adding this widget. As a dynamic
 		// widget, I feel it would be wrong to add this to the static list of widgets for this container.
@@ -94,7 +94,7 @@ public class PileView extends Widget {
 		}
 
 		// clear to the background color of the viewing peer.
-		Graphics g = offscreenImage.getGraphics();
+		java.awt.Graphics g = offscreenImage.getGraphics();
 
 		// draw background according to skin visitor.
 		container.getVisitor().visit(g, getBounds());
@@ -120,7 +120,7 @@ public class PileView extends Widget {
 			}
 		} else {
 			// Create a thin rectangle outline to show outline of the pile.
-			g.setColor (Color.black);
+			g.setColor (java.awt.Color.black);
 			g.drawRect (0, 0, cards.getWidth(), cards.getHeight());
 		}
 

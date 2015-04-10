@@ -86,7 +86,7 @@ public class BuildablePileView extends Widget {
 		}
 
 		// wasn't on a faceup Card.
-		Rectangle r = new Rectangle (0, deltaY, cards.getWidth(), deltaY + cards.getHeight() + (numFaceUp-1) * cards.getOverlap());
+		java.awt.Rectangle r = new java.awt.Rectangle (0, deltaY, cards.getWidth(), deltaY + cards.getHeight() + (numFaceUp-1) * cards.getOverlap());
 		if (!r.contains (p)) {
 			return null;
 		}
@@ -177,7 +177,7 @@ public class BuildablePileView extends Widget {
 
 		// clear to the background color of the viewing peer.
 		if (offscreenImage == null) return;  // inability to have image means we can't continue.
-		Graphics g = offscreenImage.getGraphics();
+		java.awt.Graphics g = offscreenImage.getGraphics();
 		
 		// draw background according to skin visitor.
 		container.getVisitor().visit(g, getBounds());
@@ -207,7 +207,7 @@ public class BuildablePileView extends Widget {
 			int h = cards.getHeight();
 
 			// Draw full rectangle
-			g.setColor (Color.black);
+			g.setColor (java.awt.Color.black);
 			g.drawRect (0, 0, w, h);
 		}
 
