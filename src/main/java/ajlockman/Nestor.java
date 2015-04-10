@@ -1,6 +1,8 @@
 package ajlockman;
 import ks.client.gamefactory.GameWindow;
+import ks.common.controller.SolitaireMouseMotionAdapter;
 import ks.common.games.Solitaire;
+import ks.common.games.SolitaireUndoAdapter;
 import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
@@ -55,6 +57,15 @@ public class Nestor extends Solitaire
 
     void initializeController()
     {
+        for (int i = 0; i < 8; i++)
+        {
+            tableauViews[i].setMouseAdapter(new TableauController(this, tableauViews[i], deck));
+            tableauViews[i].setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+            tableauViews[i].setUndoAdapter(new SolitaireUndoAdapter(this));
+        }
+//        reserveView.setMouseAdapter(new TableauController(this));
+//        reserveView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//        reserveView.setUndoAdapter(new SolitaireUndoAdapter(this));
     }
 
     void initializeModel(int seed)
