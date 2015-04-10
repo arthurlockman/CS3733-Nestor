@@ -101,7 +101,7 @@ public class TableauController extends SolitaireReleasedAdapter
         {
             ColumnView colView = (ColumnView) draggingWidget;
             Column theCol = (Column) colView.getModelElement();
-            Card theCard = theCol.get();
+            Card theCard = theCol.peek();
 
             Column dst = (Column) col.getModelElement();
             BuildablePile src = (BuildablePile) fromWidget.getModelElement();
