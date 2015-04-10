@@ -7,12 +7,25 @@ import ks.launcher.Main;
 
 public class TableauMoveTest extends TestCase
 {
+    Nestor nestor;
+    GameWindow gw;
+
+    @Override
+    protected void setUp()
+    {
+        nestor = new Nestor();
+        gw = Main.generateWindow(nestor, Deck.OrderByRank);
+        gw.setVisible(true);
+    }
+
+    @Override
+    protected void tearDown()
+    {
+        gw.dispose();
+    }
+
     public void testSimpleMoveValidity()
     {
-        Nestor nestor = new Nestor();
-        GameWindow gw = Main.generateWindow(nestor, Deck.OrderByRank);
-        gw.setVisible(true);
-
         Card theCard = nestor.tableau[0].get();
         TableauMove rctm =
                 new TableauMove(nestor.tableau[0],
@@ -22,10 +35,6 @@ public class TableauMoveTest extends TestCase
 
     public void testInvalidMoveValidity()
     {
-        Nestor nestor = new Nestor();
-        GameWindow gw = Main.generateWindow(nestor, Deck.OrderByRank);
-        gw.setVisible(true);
-
         Card theCard = nestor.tableau[0].get();
         TableauMove rctm =
                 new TableauMove(nestor.tableau[0],
@@ -35,10 +44,6 @@ public class TableauMoveTest extends TestCase
 
     public void testValidMove()
     {
-        Nestor nestor = new Nestor();
-        GameWindow gw = Main.generateWindow(nestor, Deck.OrderByRank);
-        gw.setVisible(true);
-
         int c1count = nestor.tableau[0].count();
         int c2count = nestor.tableau[1].count();
         Card theCard = nestor.tableau[0].get();
@@ -53,10 +58,6 @@ public class TableauMoveTest extends TestCase
 
     public void testInvalidMove()
     {
-        Nestor nestor = new Nestor();
-        GameWindow gw = Main.generateWindow(nestor, Deck.OrderByRank);
-        gw.setVisible(true);
-
         int c1count = nestor.tableau[0].count();
         int c2count = nestor.tableau[4].count();
         Card theCard = nestor.tableau[0].get();
