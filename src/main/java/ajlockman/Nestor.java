@@ -63,9 +63,9 @@ public class Nestor extends Solitaire
             tableauViews[i].setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
             tableauViews[i].setUndoAdapter(new SolitaireUndoAdapter(this));
         }
-//        reserveView.setMouseAdapter(new TableauController(this));
-//        reserveView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//        reserveView.setUndoAdapter(new SolitaireUndoAdapter(this));
+        reserveView.setMouseAdapter(new ReserveController(this, reserveView, deck));
+        reserveView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+        reserveView.setUndoAdapter(new SolitaireUndoAdapter(this));
     }
 
     void initializeModel(int seed)
@@ -138,6 +138,7 @@ public class Nestor extends Solitaire
             tableauViews[i].setBounds(20 * (i + 1) + (i * ci.getWidth()),
                     30, ci.getWidth(),
                     (int)(ci.getHeight() * 0.23 * 7) + ci.getHeight());
+            tableauViews[i].setName("TableauView" + i);
             container.addWidget(tableauViews[i]);
         }
 
@@ -145,6 +146,7 @@ public class Nestor extends Solitaire
         reserveView = new BuildablePileView(reserve);
         reserveView.setBounds(20, 30 + tableauViews[0].getHeight(),
                 ci.getWidth(), (int)(ci.getHeight() * 1.5));
+        reserveView.setName("ReserveView");
         container.addWidget(reserveView);
 
         //Initialize score view
@@ -153,6 +155,7 @@ public class Nestor extends Solitaire
         scoreView.setBounds(40 + ci.getWidth(),
                 30 + tableauViews[0].getHeight(),
                 100, 60);
+        scoreView.setName("ScoreView");
         container.addWidget(scoreView);
 
         //Initialize cards left view
@@ -161,6 +164,7 @@ public class Nestor extends Solitaire
         numLeftView.setBounds(140 + ci.getWidth(),
                 30 + tableauViews[0].getHeight(),
                 100, 60);
+        numLeftView.setName("NumLeftView");
         container.addWidget(numLeftView);
     }
 

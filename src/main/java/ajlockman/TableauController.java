@@ -1,10 +1,7 @@
 package ajlockman;
 
 import ks.common.controller.SolitaireReleasedAdapter;
-import ks.common.model.Card;
-import ks.common.model.Column;
-import ks.common.model.Deck;
-import ks.common.model.Move;
+import ks.common.model.*;
 import ks.common.view.CardView;
 import ks.common.view.ColumnView;
 import ks.common.view.Container;
@@ -34,8 +31,8 @@ public class TableauController extends SolitaireReleasedAdapter
         Container c = theGame.getContainer();
 
         /** Return if there is no card to be chosen. */
-        Column wastePile = (Column) col.getModelElement();
-        if (wastePile.count() == 0)
+        Column sourceCol = (Column) col.getModelElement();
+        if (sourceCol.count() == 0)
         {
             c.releaseDraggingObject();
             return;
@@ -52,7 +49,9 @@ public class TableauController extends SolitaireReleasedAdapter
         Widget w = c.getActiveDraggingObject();
         if (w != Container.getNothingBeingDragged())
         {
-            System.err.println ("WastePileController::mousePressed(): Unexpectedly encountered a Dragging Object during a Mouse press.");
+            System.err.println ("WastePileController::mousePressed(): " +
+                    "Unexpectedly encountered a Dragging Object during a " +
+                    "Mouse press.");
             return;
         }
 
@@ -69,35 +68,55 @@ public class TableauController extends SolitaireReleasedAdapter
 
         Widget draggingWidget = c.getActiveDraggingObject();
         if (draggingWidget == Container.getNothingBeingDragged()) {
-            System.err.println ("FoundationController::mouseReleased() unexpectedly found nothing being dragged.");
+            System.err.println ("FoundationController::mouseReleased() " +
+                    "unexpectedly found nothing being dragged.");
             c.releaseDraggingObject();
             return;
         }
 
         Widget fromWidget = c.getDragSource();
         if (fromWidget == null) {
-            System.err.println ("FoundationController::mouseReleased(): somehow no dragSource in container.");
+            System.err.println ("FoundationController::mouseReleased(): " +
+                    "somehow no dragSource in container.");
             c.releaseDraggingObject();
             return;
         }
 
-        Column dst = (Column)col.getModelElement();
-        Column src = (Column)fromWidget.getModelElement();
+        System.out.println(fromWidget.getName());
 
-        CardView cardview = (CardView)draggingWidget;
-        Card theCard = (Card)cardview.getModelElement();
+        CardView cardview = (CardView) draggingWidget;
+        Card theCard = (Card) cardview.getModelElement();
 
-        Move tableauMove = new TableauMove(src, dst, theCard, d);
-        if (tableauMove.doMove(theGame))
+        if (fromWidget.getName().contains("Tableau"))
         {
-            theGame.pushMove(tableauMove);
-        }
-        else
+            Column dst = (Column) col.getModelElement();
+            Column src = (Column) fromWidget.getModelElement();
+
+            Move tableauMove = new TableauMove(src, dst, theCard, d);
+            if (tableauMove.doMove(theGame))
+            {
+                theGame.pushMove(tableauMove);
+            } else
+            {
+                fromWidget.returnWidget(draggingWidget);
+            }
+        } else if (fromWidget.getName().contains("Reserve"))
         {
-            fromWidget.returnWidget(draggingWidget);
+            Column dst = (Column) col.getModelElement();
+            BuildablePile src = (BuildablePile) fromWidget.getModelElement();
+
+            Move reserveMove = new ReserveMove(src, dst, theCard, d);
+            if (reserveMove.doMove(theGame))
+            {
+                theGame.pushMove(reserveMove);
+            } else
+            {
+                fromWidget.returnWidget(draggingWidget);
+            }
         }
 
         c.releaseDraggingObject();
         c.repaint();
+
     }
 }
