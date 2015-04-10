@@ -56,6 +56,24 @@ public class TableauMoveTest extends TestCase
         assertEquals(2, nestor.getScore().getValue());
     }
 
+    public void testValidMoveUndo()
+    {
+        int c1count = nestor.tableau[0].count();
+        int c2count = nestor.tableau[1].count();
+        Card theCard = nestor.tableau[0].get();
+        TableauMove rctm =
+                new TableauMove(nestor.tableau[0],
+                        nestor.tableau[1], theCard, nestor.deck);
+        assertEquals(true, rctm.doMove(nestor));
+        assertEquals(c1count - 1, nestor.tableau[0].count());
+        assertEquals(c2count - 1, nestor.tableau[1].count());
+        assertEquals(2, nestor.getScore().getValue());
+
+        assertEquals(true, rctm.undo(nestor));
+        assertEquals(c1count, nestor.tableau[0].count());
+        assertEquals(c2count, nestor.tableau[1].count());
+    }
+
     public void testInvalidMove()
     {
         int c1count = nestor.tableau[0].count();
