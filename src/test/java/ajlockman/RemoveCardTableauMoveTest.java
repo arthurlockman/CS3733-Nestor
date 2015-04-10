@@ -44,6 +44,7 @@ public class RemoveCardTableauMoveTest extends TestCase
         assertEquals(true, rctm.doMove(nestor));
         assertEquals(c1count - 1, nestor.tableau[0].count());
         assertEquals(c2count - 1, nestor.tableau[1].count());
+        assertEquals(2, nestor.getScore().getValue());
     }
 
     public void testInvalidMove()
@@ -60,5 +61,6 @@ public class RemoveCardTableauMoveTest extends TestCase
         assertEquals(false, rctm.doMove(nestor));
         assertEquals(c1count, nestor.tableau[0].count());
         assertEquals(c2count, nestor.tableau[4].count());
+        assertEquals(0, nestor.getScore().getValue());
     }
 }

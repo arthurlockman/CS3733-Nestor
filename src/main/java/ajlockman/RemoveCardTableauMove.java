@@ -27,6 +27,7 @@ public class RemoveCardTableauMove extends Move
         deck.add(c1);
         Card c2 = source2.get();
         deck.add(c2);
+        game.updateScore(+2);
         return true;
     }
 
@@ -37,6 +38,7 @@ public class RemoveCardTableauMove extends Move
         source2.add(c);
         c = deck.get();
         source1.add(c);
+        game.updateScore(-2);
         return true;
     }
 
