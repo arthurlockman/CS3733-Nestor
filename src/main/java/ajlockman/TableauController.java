@@ -16,8 +16,9 @@ public class TableauController extends SolitaireReleasedAdapter
 {
     protected ColumnView col;
     protected Deck d;
+
     /**
-     * SolitaireReleasedAdapter constructor comment.
+     * Handles removing cards between tableau columns.
      *
      * @param theGame game under play.
      */
@@ -30,7 +31,6 @@ public class TableauController extends SolitaireReleasedAdapter
 
     public void mousePressed(MouseEvent me)
     {
-        System.out.println("Mouse pressed.");
         Container c = theGame.getContainer();
 
         /** Return if there is no card to be chosen. */
@@ -65,7 +65,6 @@ public class TableauController extends SolitaireReleasedAdapter
 
     public void mouseReleased(MouseEvent me)
     {
-        System.out.println("Mouse released.");
         Container c = theGame.getContainer();
 
         Widget draggingWidget = c.getActiveDraggingObject();
