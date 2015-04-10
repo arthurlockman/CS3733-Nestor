@@ -39,7 +39,6 @@ public class TableauController extends SolitaireReleasedAdapter
         }
 
         CardView cardView = col.getCardViewForTopCard(me);
-
         if (cardView == null)
         {
             c.releaseDraggingObject();
@@ -82,13 +81,11 @@ public class TableauController extends SolitaireReleasedAdapter
             return;
         }
 
-        System.out.println(fromWidget.getName());
-
-        CardView cardview = (CardView) draggingWidget;
-        Card theCard = (Card) cardview.getModelElement();
-
         if (fromWidget.getName().contains("Tableau"))
         {
+            CardView cardview = (CardView) draggingWidget;
+            Card theCard = (Card) cardview.getModelElement();
+
             Column dst = (Column) col.getModelElement();
             Column src = (Column) fromWidget.getModelElement();
 
@@ -102,6 +99,10 @@ public class TableauController extends SolitaireReleasedAdapter
             }
         } else if (fromWidget.getName().contains("Reserve"))
         {
+            ColumnView colView = (ColumnView) draggingWidget;
+            Column theCol = (Column) colView.getModelElement();
+            Card theCard = theCol.get();
+
             Column dst = (Column) col.getModelElement();
             BuildablePile src = (BuildablePile) fromWidget.getModelElement();
 
