@@ -170,7 +170,7 @@ public class Nestor extends Solitaire
 
     public static void main (String []args)
     {
-        GameWindow gw = Main.generateWindow(new Nestor(), Deck.OrderBySuit);
+        GameWindow gw = Main.generateWindow(new Nestor(), Deck.OrderByRank);
         gw.setVisible(true);
     }
 }
