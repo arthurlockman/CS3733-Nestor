@@ -42,7 +42,7 @@ public class ReserveController extends SolitaireReleasedAdapter
                 theGame.refreshWidgets();
             } else {
                 // error in flip card. Not sure what to do
-                System.err.println ("BuildablePileController::mousePressed(). " +
+                System.err.println ("ReserveController::mousePressed(). " +
                         "Unexpected failure in flip card.");
             }
             return;
@@ -56,7 +56,7 @@ public class ReserveController extends SolitaireReleasedAdapter
 
         Column col = (Column) colView.getModelElement();
         if (col == null) {
-            System.err.println("BuildablePileController::mousePressed(): " +
+            System.err.println("ReserveController::mousePressed(): " +
                     "Unexpectedly encountered a ColumnView with no Column.");
             return; // sanity check, but should never happen.
         }
@@ -64,7 +64,7 @@ public class ReserveController extends SolitaireReleasedAdapter
         Widget w = c.getActiveDraggingObject();
         if (w != Container.getNothingBeingDragged())
         {
-            System.err.println ("WastePileController::mousePressed(): " +
+            System.err.println ("ReserveController::mousePressed(): " +
                     "Unexpectedly encountered a Dragging Object during a " +
                     "Mouse press.");
             return;
@@ -83,7 +83,7 @@ public class ReserveController extends SolitaireReleasedAdapter
 
         Widget draggingWidget = c.getActiveDraggingObject();
         if (draggingWidget == Container.getNothingBeingDragged()) {
-            System.err.println ("FoundationController::mouseReleased() " +
+            System.err.println ("ReserveController::mouseReleased() " +
                     "unexpectedly found nothing being dragged.");
             c.releaseDraggingObject();
             return;
@@ -91,7 +91,7 @@ public class ReserveController extends SolitaireReleasedAdapter
 
         Widget fromWidget = c.getDragSource();
         if (fromWidget == null) {
-            System.err.println ("FoundationController::mouseReleased(): " +
+            System.err.println ("ReserveController::mouseReleased(): " +
                     "somehow no dragSource in container.");
             c.releaseDraggingObject();
             return;

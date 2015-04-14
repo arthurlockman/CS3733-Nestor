@@ -48,7 +48,7 @@ public class TableauController extends SolitaireReleasedAdapter
         Widget w = c.getActiveDraggingObject();
         if (w != Container.getNothingBeingDragged())
         {
-            System.err.println ("WastePileController::mousePressed(): " +
+            System.err.println ("TableauController::mousePressed(): " +
                     "Unexpectedly encountered a Dragging Object during a " +
                     "Mouse press.");
             return;
@@ -67,7 +67,7 @@ public class TableauController extends SolitaireReleasedAdapter
 
         Widget draggingWidget = c.getActiveDraggingObject();
         if (draggingWidget == Container.getNothingBeingDragged()) {
-            System.err.println ("FoundationController::mouseReleased() " +
+            System.err.println ("TableauController::mouseReleased() " +
                     "unexpectedly found nothing being dragged.");
             c.releaseDraggingObject();
             return;
@@ -75,7 +75,7 @@ public class TableauController extends SolitaireReleasedAdapter
 
         Widget fromWidget = c.getDragSource();
         if (fromWidget == null) {
-            System.err.println ("FoundationController::mouseReleased(): " +
+            System.err.println ("TableauController::mouseReleased(): " +
                     "somehow no dragSource in container.");
             c.releaseDraggingObject();
             return;
