@@ -67,8 +67,11 @@ public class Nestor extends Solitaire
         reserveView.setMouseAdapter(new ReserveController(this, reserveView, deck));
         reserveView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
         reserveView.setUndoAdapter(new SolitaireUndoAdapter(this));
-        scoreView.setMouseAdapter (new SolitaireReleasedAdapter(this));
+
+        scoreView.setMouseAdapter(new SolitaireReleasedAdapter(this));
         numLeftView.setMouseAdapter(new SolitaireReleasedAdapter(this));
+        scoreView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+        numLeftView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
     }
 
     void initializeModel(int seed)
