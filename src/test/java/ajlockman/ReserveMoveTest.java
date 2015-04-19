@@ -10,6 +10,9 @@ public class ReserveMoveTest extends TestCase {
     Nestor nestor;
     GameWindow gw;
 
+    /**
+     * Set up the window before each test.
+     */
     @Override
     protected void setUp()
     {
@@ -20,12 +23,19 @@ public class ReserveMoveTest extends TestCase {
         gw.getGameContainer().forceNextHand();
     }
 
+    /**
+     * Destroy the window after each successful test.
+     */
     @Override
     protected void tearDown()
     {
         gw.dispose();
     }
 
+    /**
+     * Test a move that moves cards from the reserve to the
+     * tableau. This move should be valid.
+     */
     public void testReserveToTableauMove()
     {
         int count1 = nestor.reserve.count() - 1;
@@ -39,6 +49,10 @@ public class ReserveMoveTest extends TestCase {
         assertEquals(count2, nestor.tableau[5].count());
     }
 
+    /**
+     * Test a move that moves cards from the tableau to the
+     * reserve. This move should be valid.
+     */
     public void testTableauToReserveMove()
     {
         int count1 = nestor.reserve.count() - 1;
@@ -52,6 +66,10 @@ public class ReserveMoveTest extends TestCase {
         assertEquals(count2, nestor.tableau[5].count());
     }
 
+    /**
+     * Test the undo functionality of a move from the
+     * tableau to the reserve.
+     */
     public void testTableauToReserveMoveUndo()
     {
         int count1 = nestor.reserve.count() - 1;
@@ -68,7 +86,10 @@ public class ReserveMoveTest extends TestCase {
         assertEquals(count1 + 1, nestor.reserve.count());
         assertEquals(count2 + 1, nestor.tableau[5].count());
     }
-
+    /**
+     * Test the undo functionality of a move from the
+     * reserve to the tableau.
+     */
     public void testReserveToTableauMoveUndo()
     {
         int count1 = nestor.reserve.count() - 1;
@@ -86,6 +107,9 @@ public class ReserveMoveTest extends TestCase {
         assertEquals(count2 + 1, nestor.tableau[5].count());
     }
 
+    /**
+     * Test to make sure that an invalid move fails.
+     */
     public void testInvalidMove()
     {
         int count1 = nestor.reserve.count();
@@ -99,6 +123,10 @@ public class ReserveMoveTest extends TestCase {
         assertEquals(count2, nestor.tableau[5].count());
     }
 
+    /**
+     * Tests the flip card move, flipping the top card
+     * of the reserve buildablePile.
+     */
     public void testFlipCardMove()
     {
         Card theCard = nestor.tableau[5].get();
@@ -117,6 +145,9 @@ public class ReserveMoveTest extends TestCase {
         assertEquals(false, fm2.doMove(nestor));
     }
 
+    /**
+     * Tests the undo functionality of the flip card move.
+     */
     public void testFlipCardMoveUndo()
     {
         Card theCard = nestor.tableau[5].get();

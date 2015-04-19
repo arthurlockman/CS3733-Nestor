@@ -7,6 +7,11 @@ import ks.launcher.Main;
 
 public class InitGameTest extends TestCase
 {
+    /**
+     * Test the game initialization method, to make sure that
+     * the correct number of cards is in each tableau column
+     * and the reserve when a game is created.
+     */
     public void testGameInit()
     {
         Nestor nestor = new Nestor();

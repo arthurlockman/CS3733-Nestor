@@ -10,6 +10,9 @@ public class TableauMoveTest extends TestCase
     Nestor nestor;
     GameWindow gw;
 
+    /**
+     * Set up the window before each test.
+     */
     @Override
     protected void setUp()
     {
@@ -18,12 +21,19 @@ public class TableauMoveTest extends TestCase
         gw.setVisible(true);
     }
 
+    /**
+     * Destroy the window after each successful test.
+     */
     @Override
     protected void tearDown()
     {
         gw.dispose();
     }
 
+    /**
+     * Tests moving a card from one tableau column
+     * to another. This move should be valid.
+     */
     public void testSimpleMoveValidity()
     {
         Card theCard = nestor.tableau[0].get();
@@ -33,6 +43,10 @@ public class TableauMoveTest extends TestCase
         assertEquals(true, rctm.valid(nestor));
     }
 
+    /**
+     * Tests moving a card from one tableau column
+     * to another. This move should be invalid.
+     */
     public void testInvalidMoveValidity()
     {
         Card theCard = nestor.tableau[0].get();
@@ -42,6 +56,10 @@ public class TableauMoveTest extends TestCase
         assertEquals(false, rctm.valid(nestor));
     }
 
+    /**
+     * Tests moving a card from one tableau column
+     * to another. This move should be valid.
+     */
     public void testValidMove()
     {
         int c1count = nestor.tableau[0].count();
@@ -56,6 +74,10 @@ public class TableauMoveTest extends TestCase
         assertEquals(2, nestor.getScore().getValue());
     }
 
+    /**
+     * Tests undo moving a card from one tableau column
+     * to another. This move should be valid.
+     */
     public void testValidMoveUndo()
     {
         int c1count = nestor.tableau[0].count();
@@ -74,6 +96,10 @@ public class TableauMoveTest extends TestCase
         assertEquals(c2count, nestor.tableau[1].count());
     }
 
+    /**
+     * Tests moving a card from one tableau column
+     * to another. This move should be invalid.
+     */
     public void testInvalidMove()
     {
         int c1count = nestor.tableau[0].count();

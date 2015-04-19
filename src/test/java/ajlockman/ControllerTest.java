@@ -12,6 +12,9 @@ public class ControllerTest extends KSTestCase
     Nestor nestor;
     GameWindow gw;
 
+    /**
+     * Set up the window before each test.
+     */
     @Override
     public void setUp()
     {
@@ -22,12 +25,19 @@ public class ControllerTest extends KSTestCase
         gw.getGameContainer().forceNextHand();
     }
 
+    /**
+     * Destroy the window after each successful test.
+     */
     @Override
     public void tearDown()
     {
         gw.dispose();
     }
 
+    /**
+     * Test a move that moves cards from the reserve pile to the
+     * tableau columns. This move should be valid.
+     */
     public void testReserveToTableauMove()
     {
         MouseEvent pr = createPressed(nestor, nestor.reserveView, 20, 50);
@@ -43,6 +53,10 @@ public class ControllerTest extends KSTestCase
         assertTrue(nestor.reserve.faceUp());
     }
 
+    /**
+     * Test a move that moves cards from the tableau columns to the
+     * reserve pile. This move should be valid.
+     */
     public void testTableauToReserveMove()
     {
         MouseEvent pr = createPressed(nestor, nestor.tableauViews[5], 20, 200);
@@ -58,6 +72,10 @@ public class ControllerTest extends KSTestCase
         assertTrue(nestor.reserve.faceUp());
     }
 
+    /**
+     * Test a move that moves cards from the tableau columns to the
+     * reserve pile. This move should be invalid.
+     */
     public void testBrokenTableauToReserveMove()
     {
         MouseEvent pr = createPressed(nestor, nestor.tableauViews[5], 0, 0);
@@ -74,6 +92,10 @@ public class ControllerTest extends KSTestCase
         }
     }
 
+    /**
+     * Test a move that moves cards from the reserve pile to the
+     * tableau columns. This move should be invalid.
+     */
     public void testBrokenReserveToTableauMove()
     {
         MouseEvent pr = createPressed(nestor, nestor.reserveView, 0, 0);
@@ -90,6 +112,10 @@ public class ControllerTest extends KSTestCase
         }
     }
 
+    /**
+     * Test a move that moves cards from the tableau columns to the
+     * tableau columns. This move should be valid.
+     */
     public void testTableauToTableauMove()
     {
         MouseEvent pr = createPressed(nestor, nestor.tableauViews[0], 20, 200);
@@ -102,6 +128,10 @@ public class ControllerTest extends KSTestCase
         assertEquals(new Card(Card.SIX, Card.SPADES), nestor.tableau[1].peek());
     }
 
+    /**
+     * Test a move that moves cards from the tableau columns to the
+     * tableau columns. This move should be invalid.
+     */
     public void testBrokenTableauToTableauMove()
     {
         MouseEvent pr = createPressed(nestor, nestor.tableauViews[0], 0, 0);

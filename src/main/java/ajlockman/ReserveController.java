@@ -12,7 +12,7 @@ public class ReserveController extends SolitaireReleasedAdapter
     protected BuildablePileView pile;
     protected Deck d;
     /**
-     * SolitaireReleasedAdapter constructor comment.
+     * Handle mouse events on the reserve pile.
      *
      * @param theGame game under play.
      */
@@ -23,6 +23,10 @@ public class ReserveController extends SolitaireReleasedAdapter
         this.d = deck;
     }
 
+    /**
+     * Handle when the mouse is pressed on the reserve column.
+     * @param me The triggered mouse event.
+     */
     public void mousePressed(MouseEvent me)
     {
         Container c = theGame.getContainer();
@@ -35,6 +39,7 @@ public class ReserveController extends SolitaireReleasedAdapter
             return;
         }
 
+        //If the top card is not flipped, flip the top card.
         if (sourcePile.getNumFaceUp() == 0) {
             Move m = new FlipCardMove (sourcePile);
             if (m.doMove(theGame)) {
@@ -48,6 +53,7 @@ public class ReserveController extends SolitaireReleasedAdapter
             return;
         }
 
+        //Otherwise hand off card to the container for drag.
         ColumnView colView = pile.getColumnView(me);
 
         if (colView == null) {
@@ -77,6 +83,10 @@ public class ReserveController extends SolitaireReleasedAdapter
         pile.redraw();
     }
 
+    /**
+     * Handle when the mouse is released on the reserve.
+     * @param me The triggered mouse event.
+     */
     public void mouseReleased(MouseEvent me)
     {
         Container c = theGame.getContainer();
@@ -97,6 +107,7 @@ public class ReserveController extends SolitaireReleasedAdapter
             return;
         }
 
+        //If widget is not from the reserve, do move.
         if (!fromWidget.getName().contains("Reserve"))
         {
             CardView cardview = (CardView) draggingWidget;

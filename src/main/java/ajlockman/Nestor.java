@@ -14,6 +14,11 @@ import ks.common.view.ColumnView;
 import ks.common.view.IntegerView;
 import ks.launcher.Main;
 
+/**
+ * An implementation of the solitaire game Nestor. The objective
+ * of the game is to remove cards of matching ranks. Once
+ * all matched pairs have been removed, then the game is won.
+ */
 public class Nestor extends Solitaire
 {
     protected Deck deck;
@@ -23,12 +28,20 @@ public class Nestor extends Solitaire
     protected ColumnView[] tableauViews = new ColumnView[8];
     protected IntegerView scoreView, numLeftView;
 
+    /**
+     * Return the name of the game.
+     * @return A string, the game's name.
+     */
     @Override
     public String getName()
     {
         return "ajlockman-Nestor";
     }
 
+    /**
+     * Determines if the game has been won.
+     * @return True if the game is won, false otherwise.
+     */
     @Override
     public boolean hasWon()
     {
@@ -41,11 +54,6 @@ public class Nestor extends Solitaire
         return (empty == 9);
     }
 
-    /**
-     * Deck of cards be dealt into the tableau columns such that
-     * each column contains no cards of the same rank. The
-     * remaining cards are placed into a buildable pile.
-     */
     @Override
     public void initialize()
     {
@@ -56,6 +64,10 @@ public class Nestor extends Solitaire
         updateScore(0);
     }
 
+    /**
+     * Initialize the controllers. This creates the controllers for each
+     * visual entity used in the game.
+     */
     void initializeController()
     {
         for (int i = 0; i < 8; i++)
@@ -74,6 +86,13 @@ public class Nestor extends Solitaire
         numLeftView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
     }
 
+    /**
+     * Deck of cards be dealt into the tableau columns such that
+     * each column contains no cards of the same rank. The
+     * remaining cards are placed into a buildable pile.
+     *
+     * @param seed The seed to create the deck with.
+     */
     void initializeModel(int seed)
     {
         deck = new Deck("deck");
@@ -91,7 +110,12 @@ public class Nestor extends Solitaire
 
         updateNumberCardsLeft(52);
 
-        //Handle dealing cards
+        //Deal cards onto the stacks. This will deal cards in such
+        //a way that no two cards of the same rank are left in the
+        //same column. In the event that a card cannot be dealt
+        //onto any column due to rank, it adds it to the reserve
+        //instead of the tableau, leading to a tableau of 5 cards
+        //instead of the usual 4.
         System.out.println("Dealing cards...");
         int deals = 0;
         while (deck.count() > 4)
@@ -133,6 +157,11 @@ public class Nestor extends Solitaire
         System.out.println("Done.");
     }
 
+    /**
+     * Initialize the visual entities. This method creates
+     * and places all visual entities on the screen and adds
+     * them to the visual container.
+     */
     void initializeView()
     {
         CardImages ci = getCardImages();
@@ -174,6 +203,10 @@ public class Nestor extends Solitaire
         container.addWidget(numLeftView);
     }
 
+    /**
+     * Main method for Nestor.
+     * @param args command line arguments.
+     */
     public static void main (String []args)
     {
         GameWindow gw = Main.generateWindow(new Nestor(), Deck.OrderByRank);

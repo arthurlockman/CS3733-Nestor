@@ -26,6 +26,10 @@ public class TableauController extends SolitaireReleasedAdapter
         this.d = deck;
     }
 
+    /**
+     * Handle when the mouse is pressed on the column.
+     * @param me The triggered mouse event.
+     */
     public void mousePressed(MouseEvent me)
     {
         Container c = theGame.getContainer();
@@ -61,6 +65,10 @@ public class TableauController extends SolitaireReleasedAdapter
         col.redraw();
     }
 
+    /**
+     * Handle when the mouse is released on the column.
+     * @param me The triggered mouse event.
+     */
     public void mouseReleased(MouseEvent me)
     {
         Container c = theGame.getContainer();
@@ -81,6 +89,7 @@ public class TableauController extends SolitaireReleasedAdapter
             return;
         }
 
+        //If widget is from the tableau, handle move like this.
         if (fromWidget.getName().contains("Tableau"))
         {
             CardView cardview = (CardView) draggingWidget;
@@ -97,11 +106,11 @@ public class TableauController extends SolitaireReleasedAdapter
             {
                 fromWidget.returnWidget(draggingWidget);
             }
-        } else if (fromWidget.getName().contains("Reserve"))
+        } else if (fromWidget.getName().contains("Reserve")) //Else if it's from the reserve...
         {
             ColumnView colView = (ColumnView) draggingWidget;
             Column theCol = (Column) colView.getModelElement();
-            Card theCard = theCol.peek();
+            Card theCard = theCol.peek(); //Have to extract card from dragging column
 
             Column dst = (Column) col.getModelElement();
             BuildablePile src = (BuildablePile) fromWidget.getModelElement();
@@ -118,6 +127,5 @@ public class TableauController extends SolitaireReleasedAdapter
 
         c.releaseDraggingObject();
         c.repaint();
-
     }
 }
