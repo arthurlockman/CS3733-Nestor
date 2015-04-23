@@ -18,6 +18,8 @@ import ks.launcher.Main;
  * An implementation of the solitaire game Nestor. The objective
  * of the game is to remove cards of matching ranks. Once
  * all matched pairs have been removed, then the game is won.
+ *
+ * @author Arthur Lockman - WPI CS 3733
  */
 public class Nestor extends Solitaire
 {
